@@ -10,14 +10,14 @@ console = Console()
     
 def get_system_table() -> Table:
     """Fetches current Linux system metrics and formats them into a Rich table."""
-    sys_table = Table(title=f"WSL System Monitor ({platform.node()})", style="cyan")
+    sys_table = Table(title=f"WSL System Monitor ({platform.node()})", style="cyan") # platform.node() pulls network hostname of WSL instance
     
     sys_table.add_column("Resource", style="bold white", width=20)
     sys_table.add_column("Usage/Status", style="green", width=35)
 
     # 1. CPU Usage
-    cpu_percent = psutil.cpu_percent(interval=None)
-    cpu_cores = psutil.cpu_count(logical=True)
+    cpu_percent = psutil.cpu_percent(interval=None) # non-blocking since main loop handles 1s wait
+    cpu_cores = psutil.cpu_count(logical=True) # number of CPU threads Windows is allocating to WSL2 virtual machine
     sys_table.add_row("CPU Load", f"{cpu_percent}% ({cpu_cores} logical cores (aka threads))")
     
     # 2. RAM Usage
