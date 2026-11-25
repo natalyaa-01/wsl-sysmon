@@ -11,7 +11,7 @@ A lightweight, real-time terminal dashboard built in Python to monitor CPU load,
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com<YOUR-USERNAME>/wsl-sysmon.git
+   git clone https://github.com/natalyaa-01/wsl-sysmon.git
    cd wsl-sysmon
    ```
 
